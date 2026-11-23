@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "📦 数据与标签图片勘误 / Data & Label Media Errata (opf-data)"
+    url: "https://github.com/mickey996icu/opf-data/issues"
+    about: "报告商品数据错漏、多厂拆轨合并、停产或图片引用勘误 / Report product data errata, track splits, discontinuation, or media ref issues"
+  - name: "🧰 工具链、校验与法规词典问题 / Tooling, Validation & Schema Issues (open-packaged-food)"
+    url: "https://github.com/mickey996icu/open-packaged-food/issues"
+    about: "报告 opf validate-media 校验工具、规范或词典问题 / Report opf validate-media, CLI, schema, or dictionary issues"
+  - name: "📖 开发者纯 Git 贡献指南 / Developer Contributing Guide (CONTRIBUTING.md)"
+    url: "https://github.com/mickey996icu/open-packaged-food/blob/main/CONTRIBUTING.md"
+    about: "了解双仓内容寻址图片与数据提交的纯 Git PR 流程 / Learn the pure-Git dual-PR workflow for cropped WebP media and product data"

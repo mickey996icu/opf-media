@@ -1,0 +1,45 @@
+name: Validate Content-Addressed Label Media
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  OPF_TOOL_REF: "v0.2.0"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-media:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout opf-media
+        uses: actions/checkout@v4
+        with:
+          path: opf-media
+
+      - name: Checkout open-packaged-food tooling (pinned version)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/open-packaged-food
+          path: open-packaged-food
+          fetch-depth: 0
+
+      - name: Checkout pinned OPF_TOOL_REF (fallback to main prior to first tag)
+        run: |
+          if git -C open-packaged-food rev-parse --verify "${OPF_TOOL_REF}" >/dev/null 2>&1; then
+            git -C open-packaged-food checkout "${OPF_TOOL_REF}"
+          else
+            echo "Tag ${OPF_TOOL_REF} not yet created; using default branch."
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate media store (zero external deps)
+        run: ./open-packaged-food/bin/opf validate-media --allow-empty opf-media
