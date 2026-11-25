@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  OPF_TOOL_REF: "v0.2.3"
+  OPF_TOOL_REF: "v0.3.0"
 
 permissions:
   contents: read
