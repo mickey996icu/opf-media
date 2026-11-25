@@ -8,10 +8,14 @@ on:
   workflow_dispatch:
 
 env:
-  OPF_TOOL_REF: "v0.2.2"
+  OPF_TOOL_REF: "v0.2.3"
 
 permissions:
   contents: read
+
+concurrency:
+  group: "media-ci-${{ github.ref }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   validate-media:
